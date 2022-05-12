@@ -271,7 +271,7 @@ button, a {
 .projects-section {
   flex: 2;
   background-color: var(--projects-section);
-  border-radius: 32px;
+  border-radius: 15px;
   padding: 32px 32px 0 32px;
   overflow: hidden;
   height: 100%;
@@ -352,12 +352,14 @@ button, a {
   margin-left: 24px;
   flex: 1;
   width: 100%;
-  border-radius: 30px;
+  border-radius: 15px;
   position: relative;
   overflow: auto;
   transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1);
   .messages{
     ul {
+      overflow-y: scroll;
+      max-height: 600px;
       list-style: none;
       height: 100%;
       width: 100%;
@@ -610,7 +612,7 @@ button.calendar, button.calendar:active {
 
 .project-box {
   --main-color-card: #dbf6fd;
-  border-radius: 30px;
+  border-radius: 15px;
   padding: 16px;
   background-color: var(--main-color-card);
   
@@ -685,43 +687,10 @@ button.calendar, button.calendar:active {
   opacity: .7;
 }
 
-.box-progress {
-  display: block;
-  height: 4px;
-  border-radius: 6px;
-  
-  &-bar {
-    width: 100%;
-    height: 4px;
-    border-radius: 6px;
-    overflow: hidden;
-    background-color: #fff;
-    margin: 8px 0;
-  }
-  
-  &-header {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 16px;
-    margin: 0;
-  }
-  
-  &-wrapper {
-    
-  }
-  
-  &-percentage {
-    text-align: right;
-    margin: 0;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 16px;
-  }
-}
 
 .project-box-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding-top: 16px;
   position: relative;
   
@@ -736,35 +705,7 @@ button.calendar, button.calendar:active {
   }
 }
 
-.participants {
-  display: flex;
-  align-items: center;
-  
-  img {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    overflow: hidden;
-    object-fit: cover;
-    
-    &:not(:first-child) {
-      margin-left: -8px;
-    }
-  }
-}
 
-.add-participant {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: none;
-  background-color: rgba(255,255,255,0.6);
-  margin-left: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
 
 .days-left {
   background-color: rgba(255,255,255,0.6);
@@ -920,13 +861,6 @@ button.calendar, button.calendar:active {
     font-size: 10px;
   }
 
-  .box-progress-header {
-    font-size: 12px;
-  }
-
-  .box-progress-percentage {
-    font-size: 10px;
-  }
 
   .days-left {
     font-size: 8px;

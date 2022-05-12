@@ -5,28 +5,14 @@
             <p>Agendar cita</p>
             <p class="time">{{today | date}}</p>
         </div>
-        <div class="projects-section-line">
-            <div class="projects-status">
-                <div class="item-status">
-                    <span class="status-number">45</span>
-                    <span class="status-type">In Progress</span>
-                </div>
-                <div class="item-status">
-                    <span class="status-number">24</span>
-                    <span class="status-type">Upcoming</span>
-                </div>
-                <div class="item-status">
-                    <span class="status-number">62</span>
-                    <span class="status-type">Total Projects</span>
-                </div>
-            </div>
-        </div>
+        <app-scheduled-appointment-information [today]="today" [dateSelected]="model"></app-scheduled-appointment-information>        
         <div class="project-boxes jsGridView">
             <div class="calendar-container">
-                <ngb-datepicker #dp [(ngModel)]="model" (ngModelChange)="onNgModelChange($event)" (navigate)="onNavigate($event)" ></ngb-datepicker>
+                <ngb-datepicker #dp [(ngModel)]="model" (ngModelChange)="onNgModelChange($event)"
+                    (navigate)="onNavigate($event)" [markDisabled]="markDisabled"></ngb-datepicker>
             </div>
 
-            
+
         </div>
     </div>
     <div class="messages-section">
@@ -41,19 +27,29 @@
         </button>
         <div class="projects-section-header">
             <p>Seleccione hora de la cita</p>
+            <button class="add-btn" title="Agendar" (click)="scheduleAnAppointment()">
+                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </button>
         </div>
         <div class="messages">
             <ul class="p-0">
-                <li *ngFor="let time of times; index as i">
-                    <input type="radio" id="{{i}}" name="selector" [disabled]="!time.available">
+                <li *ngFor="let element of times; index as i">
+                    <!-- value="{{time.value}}"  [(ngModel)]="time" [ngModelOptions]="{standalone:true}" -->
+                    <input type="radio" id="{{i}}" name="selector" [disabled]="!element.available"
+                        value="{{element.value}}" [(ngModel)]="time"
+                        [ngModelOptions]="{standalone:true}" />
                     <label for="{{i}}">
-                        {{time.value}} 
-                        <ng-container *ngIf="!time.available">
+                        {{element.value}}
+                        <ng-container *ngIf="!element.available">
                             (no disponible)
                         </ng-container>
                     </label>
                     <div class="radiobutton"></div>
-                  </li>
+                </li>
             </ul>
         </div>
     </div>

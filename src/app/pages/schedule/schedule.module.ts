@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ScheduleComponent } from './schedule/schedule.component';
 
+// modulos compartidos
+import { SharedModule } from 'src/app/shared/shared.module';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     ScheduleComponent
@@ -14,9 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     ScheduleRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbModule
+    SharedModule,
   ]
 })
 export class ScheduleModule { }
