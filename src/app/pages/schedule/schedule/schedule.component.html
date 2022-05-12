@@ -1,0 +1,41 @@
+<div class="projects-section">
+    <div class="projects-section-header">
+        <p>Agendar cita</p>
+        <p class="time">December, 12</p>
+    </div>
+    <div class="projects-section-line">
+
+        <div class="projects-status">
+            <div class="item-status">
+                <span class="status-number">45</span>
+                <span class="status-type">In Progress</span>
+            </div>
+            <div class="item-status">
+                <span class="status-number">24</span>
+                <span class="status-type">Upcoming</span>
+            </div>
+            <div class="item-status">
+                <span class="status-number">62</span>
+                <span class="status-type">Total Projects</span>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="project-boxes jsGridView"> -->
+        <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" (dateChange)="filterFrom($event)"
+             >
+            <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker [showSpinners]="true"  
+            [showSeconds]="false" [stepHour]="1"
+              [stepMinute]="1" [stepSecond]="1" [touchUi]="true" 
+              [enableMeridian]="true" [disableMinute]="false" [hideTime]="false" >
+              <!-- Custom icon or text of Apply icon -->
+              <ng-template>
+                <!-- <mat-icon>star</mat-icon> -->
+                <span>OK</span>
+              </ng-template>
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+       
+    <!-- </div> -->
+</div>
