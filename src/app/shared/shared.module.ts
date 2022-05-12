@@ -7,12 +7,14 @@ import { ScheduledAppointmentInformationComponent } from '../components/schedule
 //pipes
 
 //directives
+import { BrokenPictureDirective } from './directives/broken-picture.directive';
 import { BoxThemeDirective } from './directives/box-theme.directive';
 import { TimeAgoDirective } from './directives/time-ago.directive';
 
 @NgModule({
   declarations: [ 
     ScheduledAppointmentInformationComponent,
+    BrokenPictureDirective,
     BoxThemeDirective,
     TimeAgoDirective
   ],
@@ -26,6 +28,7 @@ import { TimeAgoDirective } from './directives/time-ago.directive';
     ReactiveFormsModule,
     NgbModule,
     ScheduledAppointmentInformationComponent,
+    BrokenPictureDirective,
     BoxThemeDirective,
     TimeAgoDirective
   ],
