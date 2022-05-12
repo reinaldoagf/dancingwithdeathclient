@@ -1,41 +1,61 @@
-<div class="projects-section">
-    <div class="projects-section-header">
-        <p>Agendar cita</p>
-        <p class="time">December, 12</p>
-    </div>
-    <div class="projects-section-line">
-
-        <div class="projects-status">
-            <div class="item-status">
-                <span class="status-number">45</span>
-                <span class="status-type">In Progress</span>
-            </div>
-            <div class="item-status">
-                <span class="status-number">24</span>
-                <span class="status-type">Upcoming</span>
-            </div>
-            <div class="item-status">
-                <span class="status-number">62</span>
-                <span class="status-type">Total Projects</span>
+<!-- <div class="app-container">-->
+<div class="d-flex">
+    <div class="projects-section">
+        <div class="projects-section-header">
+            <p>Agendar cita</p>
+            <p class="time">{{today | date}}</p>
+        </div>
+        <div class="projects-section-line">
+            <div class="projects-status">
+                <div class="item-status">
+                    <span class="status-number">45</span>
+                    <span class="status-type">In Progress</span>
+                </div>
+                <div class="item-status">
+                    <span class="status-number">24</span>
+                    <span class="status-type">Upcoming</span>
+                </div>
+                <div class="item-status">
+                    <span class="status-number">62</span>
+                    <span class="status-type">Total Projects</span>
+                </div>
             </div>
         </div>
+        <div class="project-boxes jsGridView">
+            <div class="calendar-container">
+                <ngb-datepicker #dp [(ngModel)]="model" (ngModelChange)="onNgModelChange($event)" (navigate)="onNavigate($event)" ></ngb-datepicker>
+            </div>
+
+            
+        </div>
     </div>
-    <!-- <div class="project-boxes jsGridView"> -->
-        <mat-form-field>
-            <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" (dateChange)="filterFrom($event)"
-             >
-            <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-            <ngx-mat-datetime-picker #picker [showSpinners]="true"  
-            [showSeconds]="false" [stepHour]="1"
-              [stepMinute]="1" [stepSecond]="1" [touchUi]="true" 
-              [enableMeridian]="true" [disableMinute]="false" [hideTime]="false" >
-              <!-- Custom icon or text of Apply icon -->
-              <ng-template>
-                <!-- <mat-icon>star</mat-icon> -->
-                <span>OK</span>
-              </ng-template>
-            </ngx-mat-datetime-picker>
-          </mat-form-field>
-       
-    <!-- </div> -->
+    <div class="messages-section">
+        <button class="messages-close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-x-circle">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="15" y1="9" x2="9" y2="15" />
+                <line x1="9" y1="9" x2="15" y2="15" />
+            </svg>
+        </button>
+        <div class="projects-section-header">
+            <p>Seleccione hora de la cita</p>
+        </div>
+        <div class="messages">
+            <ul class="p-0">
+                <li *ngFor="let time of times; index as i">
+                    <input type="radio" id="{{i}}" name="selector" [disabled]="!time.available">
+                    <label for="{{i}}">
+                        {{time.value}} 
+                        <ng-container *ngIf="!time.available">
+                            (no disponible)
+                        </ng-container>
+                    </label>
+                    <div class="radiobutton"></div>
+                  </li>
+            </ul>
+        </div>
+    </div>
 </div>
+<!--   </div> -->

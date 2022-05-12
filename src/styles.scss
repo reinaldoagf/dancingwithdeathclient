@@ -1,8 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-@import '@angular/cdk/overlay-prebuilt.css';
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
 @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 
 * {
   box-sizing: border-box;
@@ -58,7 +61,7 @@ html, body {
 body {
   font-family: 'DM Sans', sans-serif;
   overflow: hidden;
-  // display: flex;
+  /* display: flex; */
   justify-content: center;
   background-color: var(--app-container);
 }
@@ -130,7 +133,7 @@ button, a {
   &-name {
     color: var(--main-color);
     margin: 0;
-    font-size: 15px;
+    font-size: 20px;
     line-height: 24px;
     font-weight: 700;
     margin: 0 32px;
@@ -341,6 +344,224 @@ button, a {
 
 
 
+
+.messages-section {
+  flex-shrink: 0;
+  padding-bottom: 32px;
+  background-color: var(--projects-section);
+  margin-left: 24px;
+  flex: 1;
+  width: 100%;
+  border-radius: 30px;
+  position: relative;
+  overflow: auto;
+  transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1);
+  .messages{
+    ul {
+      list-style: none;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul li {
+      color: #69b7f4;
+      display: block;
+      position: relative;
+      float: left;
+      width: 100%;
+    }
+    ul li input[type="radio"] {
+      position: absolute;
+      visibility: hidden;
+    }
+    
+    ul li label {
+      display: block;
+      position: relative;
+      font-weight: 400;
+      font-size: 1.5em;
+      padding: 20px 20px 20px 80px;
+      margin: 10px auto;
+      z-index: 9;
+      cursor: pointer;
+      -webkit-transition: all 0.25s linear;
+    }
+    
+    ul li:hover label {
+      color: var(--link-color-active-bg);
+    }
+    
+    ul li .radiobutton {
+      display: block;
+      position: absolute;
+      border: 4px solid #69b7f4;
+      border-radius: 100%;
+      height: 30px;
+      width: 30px;
+      top: 30px;
+      left: 20px;
+      transition: border 0.25s linear;
+      -webkit-transition: border 0.25s linear;
+    }
+    
+    ul li:hover .radiobutton {
+      border: 4px solid var(--link-color-active-bg);
+    }
+    
+    ul li .radiobutton::before {
+      display: block;
+      position: absolute;
+      content: "";
+      border-radius: 100%;
+      height: 20px;
+      width: 20px;
+      top: 1px;
+      left: 1px;
+      margin: auto;
+      transition: background 0.25s linear;
+      -webkit-transition: background 0.25s linear;
+    }
+    input[type="radio"]:disabled  {
+      opacity: 1;
+    }
+    input[type="radio"]:checked ~ .radiobutton::before {
+      background: var(--link-color-active-bg);
+      margin: auto;
+      transition: background 0.25s linear;
+      -webkit-transition: background 0.25s linear;
+    }
+    input[type="radio"]:disabled ~ .radiobutton {
+      opacity: 0.5; 
+    }
+    input[type="radio"]:checked ~ .radiobutton {
+      border: 4px solid var(--link-color-active-bg);
+    }
+    
+    input[type="radio"]:checked ~ label {
+      color: var(--link-color-active-bg);
+    }
+    input[type="radio"]:disabled ~ label {
+      opacity: 0.5; 
+    }
+  }
+  .messages-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    border: none;
+    background-color: transparent;
+    color: var(--main-color);
+    display: none;
+  }
+  
+  &.show {
+    transform: translateX(0);
+    opacity: 1;
+    margin-left: 0;
+  }
+  
+  .projects-section-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 32px 24px 0 24px;
+    background-color:  var(--projects-section);
+  }
+}
+
+.message-box {
+  border-top: 1px solid var(--message-box-border);
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  
+  &:hover {
+    background-color: var(--message-box-hover);
+    border-top-color: var(--link-color-hover);
+    
+    + .message-box {
+      border-top-color: var(--link-color-hover);
+    }
+  }
+  
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  
+   .name {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    color: var(--main-color);
+     margin: 0;
+  }
+}
+
+.message-content {
+  padding-left: 16px;
+  width: 100%;
+}
+
+.star-checkbox {
+  input {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  
+  label {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .dark & {
+    color: var(--secondary-color);
+    
+    
+    
+    input:checked + label {
+      color: var(--star);
+    }
+  }
+  
+  input:checked + label svg {
+    fill: var(--star);
+    transition: .2s;
+  }
+}
+
+.message-line {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 8px 0;
+  color: var(--secondary-color);
+  opacity: .7;
+  
+  &.time {
+    text-align: right;
+    margin-bottom: 0;
+  }
+}
+
 .project-boxes {
   margin: 0 -8px;
   overflow-y: auto;
@@ -353,68 +574,37 @@ button, a {
       width: 33.3%;
     }
   }
-  
-  &.jsListView {
-    .project-box-wrapper {
-      width: 100%;
-    }
-    .project-box {
-      display: flex;
-      border-radius: 10px;
-      position: relative;
-      > * {
-        margin-right: 24px;
-      }
+  .calendar-container{    
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 32px;
+    .bg-primary{
+      background-color: var(--link-color-active-bg) !important;
     }
     
-    .more-wrapper {
-      position: absolute;
-      right: 16px;
-      top: 16px;
-    }
-    
-    .project-box-content-header {
-      order: 1;
-      max-width: 120px;
-    }
-    
-    .project-box-header {
-      order: 2;
-    }
-    
-    .project-box-footer {
-      order: 3;
-      padding-top: 0;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    
-    .project-box-footer:after {
-      display: none;
-    }
-    
-    .participants {
-      margin-bottom: 8px;
-    }
-    
-    .project-box-content-header p {
-      text-align: left;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    
-    .project-box-header > span {
-      position: absolute;
-      bottom: 16px;
-      left: 16px;
-      font-size: 12px;
-    }
-    
-    .box-progress-wrapper {
-      order: 3;
-      flex: 1;
-    }
+button.calendar, button.calendar:active {
+  width: 2.75rem;
+  // background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+}
+
+.ngb-dp-day {
+  width: 5rem !important;
+  height: 5rem !important;
+}
+
+.ngb-dp-day > div {
+  width: 5rem !important;
+  height: 5rem !important;
+  line-height: 5rem !important;
+}
+
+.ngb-dp-weekday {
+  width: 5rem !important;
+}
   }
 }
 
@@ -753,8 +943,3 @@ button, a {
     top: 10px;
   }
 }
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

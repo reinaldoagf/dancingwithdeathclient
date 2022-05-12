@@ -4,16 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ScheduleComponent } from './schedule/schedule.component';
 
-import {
-  NgxMatDatetimePickerModule,
-  NgxMatNativeDateModule,
-  NgxMatTimepickerModule
-} from '@angular-material-components/datetime-picker';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     ScheduleComponent
@@ -21,14 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ScheduleRoutingModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatButtonModule,
-    NgxMatTimepickerModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMatDatetimePickerModule,
-    NgxMatNativeDateModule
+    NgbModule
   ]
 })
 export class ScheduleModule { }
