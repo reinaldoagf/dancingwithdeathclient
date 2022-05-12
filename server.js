@@ -5,10 +5,10 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/instaredux'));
+app.use(express.static('./dist/dancing-with-death-client'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/instaredux/'}),
+    res.sendFile('index.html', {root: 'dist/dancing-with-death-client/'}),
 );
 
 // Start the app by listening on the default Heroku port
